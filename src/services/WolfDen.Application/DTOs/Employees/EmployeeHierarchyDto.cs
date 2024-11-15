@@ -12,7 +12,8 @@
         public int? DesignationId { get; set; }
         public int? DepartmentId { get; set; }
         public int? ManagerId { get; set; }
-
         public List<EmployeeHierarchyDto> Subordinates { get; set; }
+
+
     }
 }

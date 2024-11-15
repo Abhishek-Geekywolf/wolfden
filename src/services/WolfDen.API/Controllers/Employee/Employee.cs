@@ -6,6 +6,7 @@ using WolfDen.Application.Requests.Commands.Employees.AdminUpdateEmployee;
 using WolfDen.Application.Requests.Commands.Employees.EmployeeUpdateEmployee;
 using WolfDen.Application.Requests.Queries.Employees.GetEmployeeHierarchy;
 using WolfDen.Application.Requests.Queries.Employees.GetEmployeeIdSignUp;
+using WolfDen.Application.Requests.Queries.Employees.GetEmployeeTeam;
 
 namespace WolfDen.API.Controllers.Employee
 {
@@ -34,16 +35,19 @@ namespace WolfDen.API.Controllers.Employee
         [HttpGet("Hierarchy")]
         public async Task<EmployeeHierarchyDto> GetEmployeeHierarchy([FromQuery] GetEmployeeHierarchyQuery query, CancellationToken cancellationToken)
         {
-            
+
             return await _mediator.Send(query, cancellationToken);
 
         }
         [HttpGet("Sign Up")]
-        public async Task<EmployeeSignUpDto> GetEmployeeSignUp([FromQuery]GetEmployeeIDSignUpQuery query, CancellationToken cancellationToken)
+        public async Task<EmployeeSignUpDto> GetEmployeeSignUp([FromQuery] GetEmployeeIDSignUpQuery query, CancellationToken cancellationToken)
         {
-            return await _mediator.Send(query,cancellationToken);
+            return await _mediator.Send(query, cancellationToken);
         }
-
-
+        [HttpGet("Team")]
+        public async Task<List<EmployeeHierarchyDto>> GetMyTeam([FromQuery]GetEmployeeTeamQuery query,CancellationToken cancellationToken)
+        {
+            return await _mediator.Send(query, cancellationToken);
+        }
     }
 }
